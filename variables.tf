@@ -87,10 +87,14 @@ variable "route_key" {
   default     = null
 }
 
-variable "route_selection_expression" {
+variable "raw_route_selection_expression" {
   description = "The route selection expression for the API."
   type        = string
-  default     = "$request.method $request.path"
+  default     = "\\$request.method \\$request.path"
+}
+ 
+locals {
+  route_selection_expression = replace(var.raw_route_selection_expression, "\\$", "$")
 }
 
 variable "cors_configuration" {
