@@ -32,7 +32,7 @@ resource "aws_apigatewayv2_api" "this" {
   version       = var.api_version
   body          = var.body
 
-  route_selection_expression   = var.route_selection_expression
+  route_selection_expression   = local.route_selection_expression
   api_key_selection_expression = var.api_key_selection_expression
   disable_execute_api_endpoint = var.disable_execute_api_endpoint
 
